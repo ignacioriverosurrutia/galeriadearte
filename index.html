@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Arte</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        :root {
+            --thistle: #cdb4dbff;
+            --fairy-tale: #ffc8ddff;
+            --carnation-pink: #ffafccff;
+            --uranian-blue: #bde0feff;
+            --light-sky-blue: #a2d2ffff;
+        }
+        .navbar { overflow: hidden; background-color: var(--uranian-blue); }
+        .navbar a { float: left; display: block; color: var(--light-sky-blue); text-align: center; padding: 14px 16px; text-decoration: none; }
+        .navbar a:hover { background-color: var(--carnation-pink); color: black; }
+        .main { padding: 16px; display: none; } /* Oculta todas las secciones por defecto */
+        .main.active { display: block; } /* Muestra la sección activa */
+        .gallery { display: flex; flex-wrap: wrap; }
+        .gallery img { width: 100%; max-width: 300px; margin: 4px; border-radius: 5px; transition: transform 0.2s; }
+        .gallery img:hover { transform: scale(1.05); }
+        .footer { background-color: var(--thistle); color: white; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="#home">Inicio</a>
+    <a href="#gallery">Galería de Fotos</a>
+    <a href="#contact">Contacto</a>
+</div>
+
+<div class="main" id="home">
+    <h1 style="color: var(--carnation-pink);">Bienvenidos a la Galería de Arte</h1>
+    <p>Explora nuestra colección de arte.</p>
+</div>
+
+<div class="main" id="gallery">
+    <h2 style="color: var(--fairy-tale);">Galería de Fotos</h2>
+    <div class="gallery">
+        <!-- Aquí irían las imágenes de la galería -->
+        <img src="casa1.png" alt="Arte 1">
+        <img src="pintura1.png" alt="Arte 2">
+        <!-- Más imágenes... -->
+    </div>
+</div>
+
+<div class="main" id="contact">
+    <h2 style="color: var(--thistle);">Contacto</h2>
+    <p>Para más información, por favor envíanos un mensaje.</p>
+    <!-- Formulario de contacto aquí -->
+</div>
+
+<div class="footer">
+    <p>Galería de Arte © 2024</p>
+</div>
+
+<script>
+    const navbarLinks = document.querySelectorAll('.navbar a');
+    const sections = document.querySelectorAll('.main');
+
+    navbarLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetSectionId = e.target.getAttribute('href').substring(1);
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(targetSectionId).classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>
